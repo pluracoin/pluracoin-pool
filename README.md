@@ -507,7 +507,7 @@ You need the latest stable version of Forknote for the blockchain explorer - [fo
 
 ```
 rpc-bind-ip=0.0.0.0
-enable-blockchain-indexes=1
+enable-blockexplorer=1
 enable-cors=*
 ```
 
