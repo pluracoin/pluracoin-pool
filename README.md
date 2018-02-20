@@ -1,11 +1,11 @@
-cryptonote-forknote-pool
+pluracoin-mining-pool
 ====================
 
 **NOTICE:  If you have problems with orphan blocks, read this first:
 https://github.com/forknote/forknote-pool/issues/48**
 
 
-High performance Node.js (with native C addons) mining pool for Cryptonote based coins, created with the Forknote software such as Bytecoin, Dashcoin, etc..
+High performance Node.js (with native C addons) mining pool for Cryptonote based coins, specially tuned for PluraCoin [PLURA] mining.
 
 Comes with lightweight example front-end script which uses the pool's AJAX API.
 
@@ -69,8 +69,7 @@ Comes with lightweight example front-end script which uses the pool's AJAX API.
 * Historic charts of users's hashrate and payments
 * Miner login(wallet address) validation
 * Five configurable CSS themes
-* Universal blocks and transactions explorer based on [chainradar.com](http://chainradar.com)
-* FantomCoin & MonetaVerde support
+* Universal blocks and transactions explorer based on [chainradar.com](http://chainradar.com), tuned for https://explorer.pluracoin.org
 * Set fixed difficulty on miner client by passing "address" param with ".[difficulty]" postfix
 * Prevent "transaction is too big" error with "payments.maxTransactionAmount" option
 
@@ -84,14 +83,14 @@ Comes with lightweight example front-end script which uses the pool's AJAX API.
 
 #### Pools Using This Software
 
-* http://democats.org
-* http://cryptonotepool.com/
+* https://plurapool.com (PluraCoin official mining pool)
+
 
 Usage
 ===
 
 #### Requirements
-* Coin daemon(s) (find the coin's repo and build latest version from source)
+* Coin daemon(s) (build latest version from source https://github.com/pluracoin/pluracoin)
 * simplewallet (Bytecoin/Forknote v1.1.11).  Do NOT use Forknote 2.0.0, since it's in alpha
 ```
 * [Node.js](http://nodejs.org/) v0.10+ ([follow these installation instructions](https://github.com/joyent/node/wiki/Installing-Node.js-via-package-manager))
@@ -108,11 +107,22 @@ Those are legitimate requirements. If you use old versions of Node.js or Redis t
 include `bind 127.0.0.1` in your `redis.conf` file. Also it's a good idea to learn about and understand software that
 you are using - a good place to start with redis is [data persistence](http://redis.io/topics/persistence).
 
-##### Easy install on Ubuntu 14 LTS
-Installing pool on different Linux distributives is different because it depends on system default components and versions. For now the easiest way to install pool is to use Ubuntu 14 LTS. Thus, all you had to do in order to prepare Ubunty 14 for pool installation is to run:
+##### Easy install on Ubuntu 16.04 LTS
+Installing pool on different Linux distributives is different because it depends on system default components and versions. For now the easiest way to install pool is to use Ubuntu 16.04 LTS. Thus, all you had to do in order to prepare Ubuntu 16.04 LTS for pool installation is to run:
 
 ```bash
-sudo apt-get install git build-essential redis-server libboost1.55-all-dev nodejs-dev nodejs-legacy npm cmake libssl-dev
+sudo apt-get install -y git build-essential redis-server libboost-all-dev cmake libssl-dev
+```
+
+Then download and unzip NodeJS v0.10.25 (probably any of v0.10.X version will work)
+```
+wget https://nodejs.org/dist/v0.10.25/node-v0.10.25.tar.gz && tar xvzf node-v0.10.25.tar.gz
+```
+Compile and Install NodeJS and NPM from the source:
+```
+cd node-v0.10.25
+make
+sudo make install
 ```
 
 
@@ -122,7 +132,7 @@ sudo apt-get install git build-essential redis-server libboost1.55-all-dev nodej
 Clone the repository and run `npm update` for all the dependencies to be installed:
 
 ```bash
-git clone https://github.com/forknote/cryptonote-universal-pool.git pool
+git clone https://github.com/pluracoin/pluracoin-pool.git pool
 cd pool
 npm update
 ```
@@ -133,10 +143,10 @@ npm update
 Explanation for each field:
 ```javascript
 /* Used for storage in redis so multiple coins can share the same redis instance. */
-"coin": "dashcoin",
+"coin": "pluracoin",
 
 /* Used for front-end display */
-"symbol": "DSH",
+"symbol": "PLURA",
 
 /* Minimum units in a single coin, see COIN constant in DAEMON_CODE/src/cryptonote_config.h */
 "coinUnits": 1000000000000,
