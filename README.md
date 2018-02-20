@@ -119,6 +119,7 @@ Then download and unzip NodeJS v0.10.25 (probably any of v0.10.X version will wo
 wget https://nodejs.org/dist/v0.10.25/node-v0.10.25.tar.gz && tar xvzf node-v0.10.25.tar.gz
 ```
 Compile and Install NodeJS and NPM from the source:
+(if you have enough RAM you can run e.g. ````make -j 16```` to speed up compiling)
 ```
 cd node-v0.10.25
 make
